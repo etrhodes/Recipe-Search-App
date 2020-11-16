@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Search App</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <main>
+        <article>
+            <section>
+                <div id="welcome">
+                    <h1>Cocktail Search App</h1>
+                    <h2>Welcome to the cocktail search app</h2>
+                    <h3>Look up your favorite cocktails or find a new favorite drink!</h3>
+                </div>   
+                <div>
+                    <form id="cocktail-search-form">
+                        <h2>Please enter a drink name</h2>
+                        <input id="cocktail-search" type="text" label="cocktail-name" name="cocktail-name" placeholder="e.g. Margarita">
+                        <button id="cocktail-search-button" type="submit">Search Now</button>
+                    </form>
+                </div> 
+            </section>
+            <section id="results" class="hidden">
+                <h2>Search Results</h2>
+                <div id="target">
+                </div>
+            </section>
+            <section>
+                <h3 class="hidden">Some recipes you can make.</h3>
+                <div id="recipes" class="hidden">
+                </div>
+            </section>      
+        </article>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>
