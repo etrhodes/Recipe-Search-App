@@ -30,16 +30,27 @@ function displayCocktail(responseJson) {
     console.log(responseJson);
     $('#target').empty();
     for (let i = 0; i < responseJson.drinks.length; i++) {
-    $('#target').append(`
-        <div class="item">
-            <img src=${responseJson.drinks[i].strDrinkThumb}>
-            <h4 id="drink-title">${responseJson.drinks[i].strDrink}</h4>
-            <form action="https://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
-                <input autocomplete="on" class="form-control search" name="q" value="${responseJson.drinks[i].strDrink}" type="text">
-                <button class="button" type="submit">Make it!</button>
-            </form>
-        </div>
-    `);
+        $('#target').append(`
+            <div class="item">
+                <img src=${responseJson.drinks[i].strDrinkThumb}>
+                <h4 id="drink-title">${responseJson.drinks[i].strDrink}</h4>
+                <div class="drink-recipe">
+
+                </div>
+            </div>
+        `);
+        for (let j = 1; j <= 15; j++) {
+            if (responseJson.drinks[i]['strIngredient' + j] !== null) {
+                $('.drink-recipe').last().append(`
+                    ${responseJson.drinks[i]['strIngredient' + j]} - ${responseJson.drinks[i]['strMeasure' + j]} <br>
+                `);
+            } else {
+                break;
+            }
+        }
+        $('.drink-recipe').last().append(`
+            ${responseJson.drinks[i].strInstructions};
+        `)
     }
 $('#results').removeClass('hidden');   
 };
