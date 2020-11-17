@@ -1,7 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fondamento&display=swap');
+
+
 .hidden {
     display: none;
 }
 
 img {
-    width:100%;
+    width: 100%;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+* {
+    font-family: 'fondamento';
+    background-color: black;
+    color: white;
+}
+
+button {
+    border-radius: 5px;
+}
+
+input {
+    border-radius: 5px;
+}
+
+.group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(160px, 1fr));
+}
+
+.item {
+    flex: 1;
+    flex-wrap: wrap;
 }

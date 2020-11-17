@@ -3,9 +3,9 @@
 let searchURL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?`;
 
 function cocktailSearch() {
-    $('#cocktail-search-form').on('submit', event => {
+    $('#liquor-search-form').on('submit', event => {
         event.preventDefault();
-        let cocktailName = $('#cocktail-search').val();
+        let cocktailName = $('#liquor-search').val();
         console.log(cocktailName);
         cocktailResults(cocktailName);
         getRecipes(cocktailName);
@@ -31,8 +31,14 @@ function displayCocktail(responseJson) {
     $('#target').empty();
     for (let i = 0; i < responseJson.drinks.length; i++) {
     $('#target').append(`
-        <h2 id="drink-title">${responseJson.drinks[i].strDrink}</>
-        <img src=${responseJson.drinks[i].strDrinkThumb}>
+        <div class="item">
+            <img src=${responseJson.drinks[i].strDrinkThumb}>
+            <h4 id="drink-title">${responseJson.drinks[i].strDrink}</h4>
+            <form action="https://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
+                <input autocomplete="on" class="form-control search" name="q" value="${responseJson.drinks[i].strDrink}" type="text">
+                <button class="button" type="submit">Make it!</button>
+            </form>
+        </div>
     `);
     }
 $('#results').removeClass('hidden');   
@@ -59,16 +65,16 @@ function getRecipes(cocktailName) {
 
 function displayRecipe(resJson) {
     console.log(resJson);
+    $('#recipes').empty();
     for (let i = 0; i < resJson.results.length; i++) {
         $('#recipes').append(`
-        <h3>Some recipes to make!</h3>
-        <ul>
-            <li>${resJson.results[i].title}</li>
-            <li><img src="${resJson.results[i].image}">
-        </ul>
+        <div class="item">
+            <img src="${resJson.results[i].image}">
+            <p>${resJson.results[i].title}</p>
+        </div>
         `)
     }
-$('#recipes').removeClass('hidden');
+$('#recipes-results').removeClass('hidden');
 }
 
 $('document').ready(function() {
