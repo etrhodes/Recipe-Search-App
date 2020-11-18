@@ -15,6 +15,7 @@ HTML
 CSS
 Javascript
 API calls
+jQuery
 
 App Screenshots:
 https://github.com/etrhodes/Recipe-Search-App/blob/main/images/2020-11-18%20(4).png
