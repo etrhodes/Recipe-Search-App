@@ -30,9 +30,9 @@ function cocktailResults(cocktailName) {
 function displayCocktail(responseJson) {
     console.log(responseJson);
     $('#target').empty();
+    $('#target-one').empty();
     if(responseJson.drinks === null) {
-        $('#results-container').empty();
-        $('#results-container').append(`
+        $('#target-one').append(`
         <h2>Sorry, we cannot find any drink recipes with that ingredient. Please try again.</h2>
         `)
     } else {
