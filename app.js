@@ -57,8 +57,8 @@ function displayCocktail(responseJson) {
             $('.drink-recipe').last().append(`
                 ${responseJson.drinks[i].strInstructions};
             `)
+        }
     }
-}
 };
 
 function getRecipes(cocktailName) {
