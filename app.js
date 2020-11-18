@@ -31,8 +31,9 @@ function displayCocktail(responseJson) {
     console.log(responseJson);
     $('#target').empty();
     if(responseJson.drinks === null) {
+        $('#results-container').empty();
         $('#results-container').append(`
-        <h2>Sorry, we cannot find any recipes. Please check your input and try again.</h2>
+        <h2>Sorry, we cannot find any drink recipes with that ingredient. Please try again.</h2>
         `)
     } else {
         $('#results').removeClass('hidden');
