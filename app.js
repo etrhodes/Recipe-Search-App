@@ -16,6 +16,7 @@ function cocktailResults(cocktailName) {
     let cocktailURL = searchURL + `s=${cocktailName}`;
     console.log(cocktailURL);
     fetch(cocktailURL)
+
         .then(response => {
             if(response.ok) {
                 return response.json();
@@ -74,6 +75,9 @@ function getRecipes(cocktailName) {
 })
 .then(resJson => 
     displayRecipe(resJson)
+)
+.then(resJson => 
+    recipeList(resJson)
 );
 }
 
@@ -89,10 +93,15 @@ function displayRecipe(resJson) {
             <div class="item">
                 <img src="${resJson.results[i].image}">
                 <p>${resJson.results[i].title}</p>
+                <input type="button" onClick="window.open('https://spoonacular.com/${resJson.results[i].title}-${resJson.results[i].id}');" return false; value="Make it">
             </div>
             `)
         }
     }
+}
+
+function recipeList(resJson) {
+    console.log(resJson)
 }
 
 $('document').ready(function() {
