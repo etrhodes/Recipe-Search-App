@@ -23,36 +23,42 @@ function cocktailResults(cocktailName) {
         })
         .then (responseJson => 
             displayCocktail(responseJson)
-        )
+        );          
 }
 
 function displayCocktail(responseJson) {
     console.log(responseJson);
     $('#target').empty();
-    for (let i = 0; i < responseJson.drinks.length; i++) {
-        $('#target').append(`
-            <div class="item">
-                <img src=${responseJson.drinks[i].strDrinkThumb}>
-                <h4 id="drink-title">${responseJson.drinks[i].strDrink}</h4>
-                <div class="drink-recipe">
-
-                </div>
-            </div>
-        `);
-        for (let j = 1; j <= 15; j++) {
-            if (responseJson.drinks[i]['strIngredient' + j] !== null) {
-                $('.drink-recipe').last().append(`
-                    ${responseJson.drinks[i]['strIngredient' + j]} - ${responseJson.drinks[i]['strMeasure' + j]} <br>
-                `);
-            } else {
-                break;
-            }
-        }
-        $('.drink-recipe').last().append(`
-            ${responseJson.drinks[i].strInstructions};
+    if(responseJson.drinks === null) {
+        $('#results-container').append(`
+        <h2>Sorry, we cannot find any recipes. Please check your input and try again.</h2>
         `)
+    } else {
+        $('#results').removeClass('hidden');
+        for (let i = 0; i < responseJson.drinks.length; i++) {
+            $('#target').append(`
+                <div class="item">
+                    <img src=${responseJson.drinks[i].strDrinkThumb}>
+                    <h4 id="drink-title">${responseJson.drinks[i].strDrink}</h4>
+                    <div class="drink-recipe">
+
+                    </div>
+                </div>
+            `);
+            for (let j = 1; j <= 15; j++) {
+                if (responseJson.drinks[i]['strIngredient' + j] !== null) {
+                    $('.drink-recipe').last().append(`
+                        ${responseJson.drinks[i]['strIngredient' + j]} - ${responseJson.drinks[i]['strMeasure' + j]} <br>
+                    `);
+                } else {
+                    break;
+                }
+            }
+            $('.drink-recipe').last().append(`
+                ${responseJson.drinks[i].strInstructions};
+            `)
     }
-$('#results').removeClass('hidden');   
+}
 };
 
 function getRecipes(cocktailName) {
@@ -68,24 +74,25 @@ function getRecipes(cocktailName) {
 })
 .then(resJson => 
     displayRecipe(resJson)
-)
-.catch(err => {
-	console.error(err);
-});
+);
 }
 
 function displayRecipe(resJson) {
     console.log(resJson);
     $('#recipes').empty();
-    for (let i = 0; i < resJson.results.length; i++) {
-        $('#recipes').append(`
-        <div class="item">
-            <img src="${resJson.results[i].image}">
-            <p>${resJson.results[i].title}</p>
-        </div>
-        `)
+    if(resJson.results.length === 0) {
+        
+    } else {
+        $('#recipes-results').removeClass('hidden');
+        for (let i = 0; i < resJson.results.length; i++) {
+            $('#recipes').append(`
+            <div class="item">
+                <img src="${resJson.results[i].image}">
+                <p>${resJson.results[i].title}</p>
+            </div>
+            `)
+        }
     }
-$('#recipes-results').removeClass('hidden');
 }
 
 $('document').ready(function() {

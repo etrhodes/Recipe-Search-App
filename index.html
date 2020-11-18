@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drink Search App</title>
+    <title>Recipe Search App</title>
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
@@ -18,18 +18,22 @@
                 <div>
                     <form id="liquor-search-form">
                         <h2>Please enter a liquor name</h2>
-                        <input id="liquor-search" type="text" label="liquor-name" name="liquor-name" placeholder="e.g. Rum or Coffee">
+                        <input id="liquor-search" type="text" label="liquor-name" name="liquor-name" placeholder="e.g. Rum or Coffee" required='required'>
                         <button id="liquor-search-button" type="submit">Search Now</button>
                     </form>
                 </div> 
             </section>
-            <section id="results" class="hidden">
-                <h2>Try a new drink!</h2>
-                <div id="target" class="group"></div>
+            <section id="results-container">
+                <div id="results" class="hidden">
+                    <h2>Try a new drink!</h2>
+                    <div id="target" class="group"></div>
+                </div> 
             </section>
-            <section id="recipes-results" class="hidden">
-                <h2>Try a new recipe!</h2>
-                <div id="recipes" class="group"></div>
+            <section id="recipes-container">
+                <div id="recipes-results" class="hidden">
+                    <h2>Try a new recipe!</h2>
+                    <div id="recipes" class="group"></div>
+                </div> 
             </section>      
         </article>
     </main>
