@@ -2,6 +2,7 @@
 
 let searchURL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?`;
 
+//Function that handles when a user submits an input
 function cocktailSearch() {
     $('#liquor-search-form').on('submit', event => {
         event.preventDefault();
@@ -12,6 +13,7 @@ function cocktailSearch() {
     });
 }
 
+//Function to grab the json data from drinks api
 function cocktailResults(cocktailName) {
     let cocktailURL = searchURL + `s=${cocktailName}`;
     console.log(cocktailURL);
@@ -26,6 +28,7 @@ function cocktailResults(cocktailName) {
             displayCocktail(responseJson)
         );          
 }
+
 
 function displayCocktail(responseJson) {
     console.log(responseJson);
@@ -77,9 +80,6 @@ function getRecipes(cocktailName) {
 .then(resJson => 
     displayRecipe(resJson)
 )
-.then(resJson => 
-    recipeList(resJson)
-);
 }
 
 function displayRecipe(resJson) {
@@ -99,10 +99,6 @@ function displayRecipe(resJson) {
             `)
         }
     }
-}
-
-function recipeList(resJson) {
-    console.log(resJson)
 }
 
 $('document').ready(function() {

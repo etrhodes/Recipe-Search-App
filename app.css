@@ -36,3 +36,56 @@ input {
 .item {
     margin: 10px;
 }
+
+
+
+
+
+
+
+
+/* 
+
+@import url('https://fonts.googleapis.com/css2?family=Fondamento&display=swap');
+
+
+.hidden {
+    display: none;
+}
+
+img {
+    width: 100%;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+* {
+    font-family: 'fondamento';
+    background-color: black;
+    color: white;
+}
+
+button {
+    border-radius: 5px;
+}
+
+input {
+    border-radius: 5px;
+}
+
+.group {
+    display: inline-block;
+    flex-direction: column;
+}
+
+.item {
+    margin: 10px;
+    width: 50%;
+    height: 50%;
+    display: inline-block;
+
+} 
+
+*/
